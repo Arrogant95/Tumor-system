@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>化疗情况</title>
+	<link type="text/css" rel="stylesheet" href="style/chemoConditionStyle.css">
+	<script src="js/jquery.min.js"></script>
+</head>
+<body>
+	<div  class="content">
+		<p class="pstyle">化疗情况</p>
+		<button  class="btnstyle" id="add1" }>增加疗程</button>
+		<button  class="btnstyle" id="add2"}>增加备注</button>
+	</div>
+	<script type="text/javascript">
+        $(document).ready(function(){
+            $('#add1').click(function(){
+                window.location.href="addChemoTreat.html";
+            });
+            $('#add2').click(function(){
+                window.location.href="addChemoRemark.html";
+            });
+        });
+    </script>
+</body>
+</html>

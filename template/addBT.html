@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>基础病治疗过程</title>
+	<link type="text/css" rel="stylesheet" href="../static/baseTreatStyle.css">
+	<script src="../static/jquery-3.1.1.min.js" type="text/javascript"></script>
+</head>
+
+<script type="text/javascript" >
+ $(document).ready(function(){ 
+        $('#sub').click(function(){
+            var chemotherapy  = $("#chemotherapy").val();
+            var chemotherapyjiliang = $("#chemotherapyjiliang").val();
+            var chemotherapypingci = $("#chemotherapypingci").val();
+            var chemotherapyway = $("#chemotherapyway").val();                 //通过Jquery获取用户在页面填下的信息
+            var chemotherapytime = $("#chemotherapytime").val();
+            var lastchemotherapynot = $("#lastchemotherapynot").val();
+            var chemotherapyelse = $("#chemotherapyelse").val();
+            var EEGTime = $("#EEGTime").val();
+            var EEGResult = $("#EEGResult").val();
+            var pathologyname = $("#pathologyname").val();
+            var pathologyNum = $("#pathologyNum").val();
+            var pathologyResult = $("#pathologyResult").val();
+            var params = {chemotherapy:chemotherapy,chemotherapyjiliang:chemotherapyjiliang,chemotherapypingci:chemotherapypingci,chemotherapyway:chemotherapyway,chemotherapytime:chemotherapytime,lastchemotherapynot:lastchemotherapynot,chemotherapyelse:chemotherapyelse,EEGTime:EEGTime,EEGResult:EEGResult,pathologyname:pathologyname,pathologyNum:pathologyNum,pathologyResult:pathologyResult};                //把所有的信息组合为一个组
+            $.ajax({
+                url:'addBT.php',
+                data:params,                                                 //把数据传到addBT.php中，当实现了插入功能时就会返回插入成功
+                type:'POST',
+                success:function(data){
+                    alert('插入成功');
+                }
+            });
+
+
+          })
+         var obj= document.location.search;
+         obj = obj.replace(/[^0-9]/g,''); 
+         $("a").attr("href","./index1.html?id="+obj);
+        });
+ </script>
+<script type="text/javascript">
+     $(document).ready(function(){
+     			$('#toggle1').hide();
+     			$('#ToggleTab1').click(function(){
+     				$('#toggle1').toggle();
+     			});
+     			$('#toggle2').hide();
+     			$('#ToggleTab2').click(function(){
+     				$('#toggle2').toggle();
+     			});
+     			$('#toggle3').hide();
+     			$('#ToggleTab3').click(function(){
+     				$('#toggle3').toggle();
+     			});
+     			$('#toggle4').hide();
+     			$('#ToggleTab4').click(function(){
+     				$('#toggle4').toggle();
+     			});
+     			$('#toggle5').hide();
+     			$('#ToggleTab5').click(function(){
+     				$('#toggle5').toggle();
+     			});
+     			$('#toggle6').hide();
+     			$('#ToggleTab6').click(function(){
+     				$('#toggle6').toggle();
+     			});
+     			$('#toggle7').hide();
+     			$('#ToggleTab7').click(function(){
+     				$('#toggle7').toggle();
+     			});
+     			$('#toggle8').hide();
+     			$('#ToggleTab8').click(function(){
+     				$('#toggle8').toggle();
+     			});
+     			$('#toggle9').hide();
+     			$('#ToggleTab9').click(function(){
+     				$('#toggle9').toggle();
+     			});
+     			$('#toggle10').hide();
+     			$('#Toggle  Tab10').click(function(){
+     				$('#toggle10').toggle();
+     			});
+     			$('#toggle11').hide();
+     			$('#ToggleTab11').click(function(){
+     				$('#toggle11').toggle();
+     			});
+
+});
+</script>
+<body>
+	<div class="head" >
+        <p class="pstyle" >基础病治疗过程</p>
+        <a href="./index1修改.html" class="person_in_btn">&lt;返回首页</a>
+    </div>
+    <div>
+		<table>
+			<thead>
+				<tr>
+					<th>化疗用药：</th>
+					<td>药品名称</td>
+					<td>剂量</td>
+					<td>频次</td>
+					<td>给药途径</td>
+					<td>给药时间</td>
+				</tr>
+			</thead>
+			<tbody id="add1">
+				<tr>
+					<th></th>
+					<td><input type="text" id="chemotherapy" /></td>
+					<td><input class="medicineLength" type="text" id="chemotherapyjiliang" /></td>
+					<td><input class="medicineLength" type="text" id="chemotherapypingci" /></td>
+					<td><input class="medicineLength" type="text" id="chemotherapyway" /></td>
+					<td><input class="medicineLength" type="text" id="chemotherapytime" /></td>
+				</tr>
+			</tbody>
+		</table>
+		<table>
+			<tbody>
+				<tr>
+					<td width="80"></td>
+					<td class="textalignTd">上个疗程不良反应</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input class="widthInput" type="text" id="lastchemotherapynot"/></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="textalignTd">其他</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input class="widthInput" type="text" id="chemotherapyelse" /></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div  id="adCA125_">
+		<table>
+			<tbody>
+				<tr>
+					<th width="80px">心电图：</th>
+					<td>时间</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td>
+						<input type="text" name="" width="210px" id="EEGTime" />
+						<label for="normal">正常&nbsp;</label>
+	                    <input name="normal" type="radio" id="normal"/>
+	                    <label for="abnormal">&nbsp;&nbsp;&nbsp;异常&nbsp;</label>
+	                    <input name="normal" type="radio" id="abnormal"/>
+		            </td>
+	           </tr>
+	           <tr>
+					<th></th>
+					<td>结果</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td><textarea class="resultOfTextarea" id="EEGResult"></textarea></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<!-- 检验 -->
+	<div>
+	<!-- 肿瘤标志 -->
+		<table>
+			<tbody id="adCA19-9_">
+				<tr>
+					<th width="80px">检验：</th>
+					<td ><b>肿瘤标志</b>&nbsp;&nbsp;<input type="button" id="ToggleTab1" class="showbtn"  /></button></td>
+				</tr>
+			</tbody>	
+		</table>	
+		<table id="toggle1">
+			<tbody >
+				<tr>
+					<td width="80px"></td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+					<td>结束时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text" value="糖类抗原CA19-9" id="CA19-9_name" /></td>
+		        	<td><input type="text" id="CA19-9_engName" /></td>
+		        	<td><input type="text" id="CA19-9_startTime" /></td>
+		        	<td><input type="text" id="CA19-9_endTime" /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text" id="CA19-9_status" /></td>
+		        	<td><input type="text" id="CA19-9_unit" /></td>
+		        	<td><input type="text" id="CA19-9_reference" /></td>
+		        </tr> 
+
+		        <tr>
+					<td width="80px"></td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+					<td>结束时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text" value="糖类抗原CA125" id="CA125_name" /></td>
+		        	<td><input type="text" id="CA125_engName" /></td>
+		        	<td><input type="text" id="CA125_startTime" /></td>
+		        	<td><input type="text" id="CA125_endTime" /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+		        	<td></td>
+		        	<td><input type="text" id="CA125_status" /></td>
+		        	<td><input type="text" id="CA125_unit" /></td>
+		        	<td><input type="text" id="CA125_reference" /></td>
+		        </tr> 
+
+		        <tr>
+					<td width="80px"></td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+					<td>结束时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text" value="人附睾蛋白4" id="rfgdb4_name" /></td>
+		        	<td><input type="text" id="rfgdb4_engName" /></td>
+		        	<td><input type="text" id="rfgdb4_startTime" /></td>
+		        	<td><input type="text" id="rfgdb4_endTime" /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text" id="rfgdb4_status" /></td>
+		        	<td><input type="text" id="rfgdb4_unit" /></td>
+		        	<td><input type="text" id="rfgdb4_reference" /></td>
+		        </tr> 
+
+		        <tr>
+					<td width="80px"></td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+					<td>结束时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text" value="人绒毛膜促性腺激素" id="rrmmcxxjs_name" /></td>
+		        	<td><input type="text"  id="rrmmcxxjs_engName" /></td>
+		        	<td><input type="text"  id="rrmmcxxjs_startTime"/></td>
+		        	<td><input type="text" id="rrmmcxxjs_endTime" /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text" id="rrmmcxxjs_status" /></td>
+		        	<td><input type="text" id="rrmmcxxjs_unit" /></td>
+		        	<td><input type="text" id="rrmmcxxjs_reference" /></td>
+		        </tr> 
+
+		        <tr>
+					<td width="80px"></td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+					<td>结束时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text" value="鳞状细胞癌相关抗原" id="lzxbaxgky_name" /></td>
+		        	<td><input type="text"  id="lzxbaxgky_engName" /></td>
+		        	<td><input type="text" id="lzxbaxgky_startTime" /></td>
+		        	<td><input type="text" id="lzxbaxgky_endTime" /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text" id="lzxbaxgky_status" /></td>
+		        	<td><input type="text" id="lzxbaxgky_unit" /></td>
+		        	<td><input type="text" id="lzxbaxgky_reference" /></td>
+		        </tr> 
+
+		         <tr>
+					<td width="80px"></td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+					<td>结束时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text" value="甲胎蛋白" id="jtdb_name" /></td>
+		        	<td><input type="text"  id="jtdb_engName"/></td>
+		        	<td><input type="text"  id="jtdb_startTime"/></td>
+		        	<td><input type="text"  id="jtdb_endTime" /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  id="jtdb_status"/></td>
+		        	<td><input type="text"  id="jtdb_unit"/></td>
+		        	<td><input type="text"  id="jtdb_reference"/></td>
+		        </tr> 
+
+		        <tr>
+					<td width="80px"></td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+					<td>结束时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text" value="癌胚抗原" id="atky_name" /></td>
+		        	<td><input type="text"  id="atky_engName"/></td>
+		        	<td><input type="text"  id="atky_startTime"/></td>
+		        	<td><input type="text"  id="atky_endTime"/></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  id="atky_status"/></td>
+		        	<td><input type="text"  id="atky_unit"/></td>
+		        	<td><input type="text"  id="atky_reference"/></td>
+		        </tr> 
+			</tbody>
+		</table>
+
+		<!-- 血常规五分类 -->
+		<table>
+			<tbody id="adCA19-9_">
+				<tr>
+					<td width="80px"></td>
+					<td><b>血常规五分类</b>&nbsp;&nbsp;<input type="button" id="ToggleTab2" class="showbtn"  /></button></td>
+				</tr>
+			</tbody>	
+		</table>
+		<table id="toggle2">
+			<tbody >
+				<tr>
+					<td width="80px"></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="白细胞计数" /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+
+		        <tr>
+					<td width="80px"></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="中性粒细胞绝对值" /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+
+		        <tr>
+					<td width="80px"></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="中性粒细胞百分比" /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+
+		        <tr>
+					<td width="80px"></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="血红蛋白" /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+
+		        <tr>
+					<td width="80px"></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="红细胞计数" /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+
+		         <tr>
+					<td width="80px"></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="血小板计数" /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+			</tbody>
+		</table>	
+
+		<!-- 生化B -->
+		<table>
+			<tbody id="adCA19-9_">
+				<tr>
+					<td width="80px"></td>
+					<td><b>生化B</b>&nbsp;&nbsp;<input type="button" id="ToggleTab3" class="showbtn"  /></button></td>
+				</tr>
+			</tbody>	
+		</table>
+		<table id="toggle3">
+			<tbody >
+		        <tr>
+					<td><b>肝功能<b></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="丙氨酸氨基转移酶"/></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+
+		        <tr>
+					<td ></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="门冬氨酸氨基转移酶"/></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+
+		        <tr>
+					<td></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="谷氨酰转肽酶"/></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+
+		       <tr>
+					<td><b>肾功能<b></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="尿素"/></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+
+		        <tr>
+					<td></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="肌酐"/></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+
+				<tr>
+					<td></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="尿酸"/></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+
+		        <tr>
+					<td></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="空腹血糖"/></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+
+		        <tr>
+					<td><b>血电解质<b></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="尿素"/></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+
+		        <tr>
+					<td></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="磷"/></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+
+		         <tr>
+					<td></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="钾"/></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+
+		        <tr>
+					<td></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="钠"/></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+
+		        <tr>
+					<td></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="氯"/></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+
+		        <tr>
+					<td></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="总钙"/></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+
+		        <tr>
+					<td></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="总镁"/></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+
+		        <tr>
+					<td><b>小便分析<b></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="白细胞"/></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+
+		        <tr>
+					<td></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="隐血"/></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+		        <tr>
+					<td></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="尿蛋白"/></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+			</tbody>
+		</table>
+
+		<!-- 粪便隐血实验 -->	
+		<table>
+			<tbody id="adCA19-9_">
+				<tr>
+					<td width="80px"></td>
+					<td><b>粪便隐血实验</b>&nbsp;&nbsp;<input type="button" id="ToggleTab4" class="showbtn"  /></button></td>
+				</tr>
+			</tbody>	
+		</table>
+		<table id="toggle4">
+			<tbody >
+		        <tr>
+					<td width="80px"></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="粪便隐血实验"/></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+		    </tbody>
+		</table>
+
+		<!-- 乙肝病毒 -->	
+		<table>
+			<tbody id="adCA19-9_">
+				<tr>
+					<td width="80px"></td>
+					<td><b>乙肝病毒</b>&nbsp;&nbsp;<input type="button" id="ToggleTab5" class="showbtn"  /></button></td>
+				</tr>
+			</tbody>	
+		</table>
+		<table id="toggle5">
+			<tbody >
+		        <tr>
+					<td width="80px"></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="乙肝病毒"/></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+		    </tbody>
+		</table>
+	</div>
+
+	<!-- 影像检查 -->
+	<div>
+	<table>
+			<tbody id="adCA19-9_">
+				<tr>
+					<th width="80px">影像检查：</th>
+					<td><b>CT</b>&nbsp;&nbsp;<input type="button" id="ToggleTab6" class="showbtn"  /></button></td>
+				</tr>
+			</tbody>	
+		</table>	
+		<table id="toggle6">
+			<tbody >
+				<tr>
+					<td width="80px"></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value="" /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+		    </tbody>
+		</table>
+
+		<table>
+			<tbody id="adCA19-9_">
+				<tr>
+					<td width="80px"></td>
+					<td><b>CS超声</b>&nbsp;&nbsp;<input type="button" id="ToggleTab7" class="showbtn"  /></button></td>
+				</tr>
+			</tbody>	
+		</table>
+		<table id="toggle7">
+			<tbody >
+		        <tr>
+					<td width="80px"></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value=""/></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+		    </tbody>
+		</table>
+
+		<table>
+			<tbody id="adCA19-9_">
+				<tr>
+					<td width="80px"></td>
+					<td><b>MRI</b>&nbsp;&nbsp;<input type="button" id="ToggleTab8" class="showbtn"  /></button></td>
+				</tr>
+			</tbody>	
+		</table>
+		<table id="toggle8">
+			<tbody >
+		        <tr>
+					<td width="80px"></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value=""/></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+		    </tbody>
+		</table>
+
+		<table>
+			<tbody id="adCA19-9_">
+				<tr>
+					<td width="80px"></td>
+					<td><b>FS放射</b>&nbsp;&nbsp;<input type="button" id="ToggleTab9" class="showbtn"  /></button></td>
+				</tr>
+			</tbody>	
+		</table>
+		<table id="toggle9">
+			<tbody >
+		        <tr>
+					<td width="80px"></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value=""/></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+		    </tbody>
+		</table>
+
+		<table>
+			<tbody id="adCA19-9_">
+				<tr>
+					<td width="80px"></td>
+					<td><b>GE胃肠镜</b>&nbsp;&nbsp;<input type="button" id="ToggleTab10" class="showbtn"  /></button></td>
+				</tr>
+			</tbody>	
+		</table>
+		<table id="toggle10">
+			<tbody >
+		        <tr>
+					<td width="80px"></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value=""/></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+		    </tbody>
+		</table>
+
+		<table>
+			<tbody id="adCA19-9_">
+				<tr>
+					<td width="80px"></td>
+					<td><b>EEG脑电图</b>&nbsp;&nbsp;<input type="button" id="ToggleTab11" class="showbtn"  /></button></td>
+				</tr>
+			</tbody>	
+		</table>
+		<table id="toggle11">
+			<tbody >
+		        <tr>
+					<td width="80px"></td>
+					<td>时间</td>
+					<td>项目名</td>
+					<td>英文名</td>
+					<td>起始时间</td>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text" value=""/></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+				<tr>
+					<td></td>
+					<td>结束时间</td>
+					<td>状态</td>
+					<td>单位</td>
+					<td>参考值</td>
+				</tr>
+		        <tr>
+					<td></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        	<td><input type="text"  /></td>
+		        </tr> 
+		    </tbody>
+		</table>
+	</div>
+
+	<!-- 病理检查 -->
+	<div class="blockMargin" id="adrrmmcxxjs_">
+		<table >
+			<tbody>
+				<tr>
+					<th>病理检查：</th>
+					<td>项目</td>
+					<td>编号</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<input type="text" name="" width="210px" id="pathologyname" />
+					</td>
+					<td><input type = "text" id="pathologyNum" /></td>
+					<td></td>
+				</tr>						
+			</tbody>
+		</table>
+		<table>
+			<tbody>
+				<tr>
+					<th width="80"></th>
+					<td>病理诊断</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td width="80"></td>
+					<td><textarea class="diagnosisInput" type = "text" id="pathologyResult" /></textarea></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="submitDiv" >
+        <button type="submit" class="submitBtn" id="sub" ">提交</button>
+        <font color="red" id="dialog"></font>
+    </div>
+</body>
+</html>

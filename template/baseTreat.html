@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>基础病治疗过程</title>
+	<link type="text/css" rel="stylesheet" href="../static/baseTreatStyle.css">
+	<script src="../static/jquery-3.1.1.min.js" type="text/javascript"></script>
+</head>
+<script type="text/javascript">
+     $(document).ready(function(){
+     		$.ajax({
+     			url:'http://127.0.0.1:5000/basecure?patient_id=1&id=182',
+     			dataType:'json',
+         		processData: false, 
+         		type:'get',
+         		success:function(data){
+         			console.log(data)
+         			console.log(data.data1)
+
+         			//data1,化疗用药
+         			$('#drugName').val(data.data1[0].drugName)
+         			$('#agentia').val(data.data1[0].agentia)
+         			$('#times').val(data.data1[0].times)
+         			$('#way').val(data.data1[0].way)
+         			$('#giveTime').val(data.data1[0].giveTime)
+         			$('#lastChemotherapy').val(data.data1[0].lastChemotherapy)
+         			$('#others').val(data.data1[0].others)
+
+         			//data8,心电图
+         			$('#electroTime').val(data.data8[0].time)
+         			$('#result').val(data.data8[0].result)
+
+         			//影像检查,data9数据是空的
+
+         			//病理检查,data10
+         			$('#selpathology').val(data.data10[0].pathology_id);
+         			$('#data10diag').val(data.data10[0].diagnosis);
+         			$('#serialNum').val(data.data10[0].serialNum);
+
+         			//检验,data2-data7
+         			$('#selCheck').bind('change',function(){
+         			    var selected_value = $(this).val(); 
+         			    if(selected_value == '0'){  //如果点击了第一个下拉框的请选择，就把后面下拉框清空
+         			            $('#selDate').val('');//清空输入框
+         			        }else if(selected_value=='data2'){//肿瘤标志物
+         			            $('#selDate').val('');
+         			            $('#selDate').val(data.data2[0].time)
+
+         			            }else if(selected_value=='data3'){//血常规
+         			                $('#selDate').val('');
+         			                $('#selDate').val(data.data3[0].bxbjs_endTime)
+
+         			            }else if(selected_value=='data4'){//生化B
+         			                $('#selDate').val('');
+         			                $('#selDate').val(data.data4[0].basajzym_endTime)
+
+         			            }else if(selected_value=='data5'){//小便分析
+         			                $('#selDate').val('');
+         			                $('#selDate').val(data.data5[0].bxb_endTime)
+
+         			            }else if(selected_value=='data6'){//粪便隐血试验
+         			                $('#selDate').val('');
+         			                $('#selDate').val(data.data6[0].endTime)
+
+         			            }else if(selected_value=='data7'){//HBV—DNA
+         			                $('#selDate').val('');
+         			                $('#selDate').val(data.data7[0].endTime)
+         			            }
+         					}),
+
+         		
+     	//=============================================================================
+			    $('#addTab1').click(function(){
+			        $('#add1').append("<tr><td></td>"+
+			        	"<td><input type='text' id='drugName'/></td>"+
+			        	"<td><input class='medicineLength' type='text' id='agentia'/></td>"+
+			        	"<td><input class='medicineLength' type='text' id='times'/></td>"+
+			        	"<td><input class='medicineLength' type='text' id='way'/></td>"+
+			        	"<td><input class='medicineLength' type='text' id='giveTime'/></td>"+
+			        	"<td><textarea class='remarkLenght'id='remark'></textarea></td></tr>");
+			    });
+			    $('#addTab2').click(function(){
+			        $('#add2').append("<table><tbody><tr>"+
+			        	"<td width='80'></td><td>时间</td>"+
+			        	"<td><input type='text' width='210px' id='electroTime'/></td>"+
+			        	"<td><label for='normal'>正常&nbsp;</label><input name='normal' type='radio' id='normal'/><label for='abnormal'>&nbsp;&nbsp;&nbsp;异常&nbsp;</label><input name='normal' type='radio' id='abnormal'/></td></tbody></table>"+
+			        	"<table><tbody><tr>"+
+			        	"<td width='80'></td><td width='35'>结果</td><td><textarea class='resultOfTextarea' id='result'></textarea></td></tr></tbody></table>");
+			    });
+			     $('#addTab3').click(function(){
+			        $('#add3').append("<tr><td width='80'></td>"+
+			        	"<td>项目</td>"+
+			        	"<td>时间</td>"+
+			        	"<td>备注</td></tr>"+
+			        	"<tr><td></td>"+
+			        	"<td id='data3'>"+
+		                "<select class='styleSelect' id='selCheck' >"+
+                            "<option value='0'>请选择项目</option>"+
+		                    "<option value='data2'>肿瘤标志物</option>"+
+		                    "<option value='data3'>血常规五分类</option>"+
+		                    "<option value='data4'>生化B</option>"+
+		                    "<option value='data5'>小便分析</option>"+
+		                    "<option value='data6'>粪便隐血试验</option>"+
+		                    "<option value='data7'>乙肝病毒</option>"+
+		                "</select>"+
+		                "<td><input type='text' width='210px' id='selDate'/></td><td><textarea class='remarkLenght'></textarea></td><td></td></tr>");
+			    });
+			     $('#addTab4').click(function(){
+			        $('#add4').append("<tr><td></td>"+
+					"<td>"+
+						"<select class='styleSelect' id='imageCheck'>"+
+                            "<option value='0'>请选择项目</option>"+
+                            "<option value='CT'>CT</option>"+
+                            "<option value='CS'>CS（超声）</option>"+
+                            "<option value='MRI'>MRI</option>"+
+                            "<option value='FS'>FS（放射）</option>"+
+                            "<option value='WEI'>胃肠镜</option>"+
+                            "<option value='Nao'>脑电图</option>"+
+                        "</select>"+
+					"</td>"+
+					"<td>"+
+						 "<select class='styleSelect' id='imageDateCheck'>"+
+                            "<option value='0'>请选择时间</option>"+
+                        "</select>"+
+					"</td>"+
+					"<td><textarea class='remarkLenght'></textarea></td>"+
+					"<td>"+
+						"<label for='positive'>阳性&nbsp;</label>"+
+	                    "<input name='property' type='radio' id='positive'/>"+
+	                    "<label for='negative'>&nbsp;&nbsp;&nbsp;阴性&nbsp;</label>"+
+	                    "<input name='property' type='radio' id='negative'/>"+   
+					"</td></tr>");
+			    });
+			     $('#addTab5').click(function(){
+			        $('#add5').append("<table >"+
+						"<tbody>"+
+							"<tr>"+
+								"<td width='80'></td>"+
+								"<td>项目</td>"+
+								"<td>编号</td>"+
+							"</tr>"+
+							"<tr>"+
+								"<td></td>"+
+								"<td>"+
+									"<input type='text' name=' width='210px' id='selpathology' />"+
+								"</td>"+
+								"<td><input type = 'text' id='serialNum' /></td>"+
+								"<td></td>"+
+							"</tr>"+					
+						"</tbody>"+
+					"</table>"+
+					"<table>"+
+						"<tbody>"+
+							"<tr>"+
+								"<td width='80'></td>"+
+								"<td>病理诊断</td>"+
+								"<td></td>"+
+								"<td></td>"+
+							"</tr>"+
+							"<tr>"+
+							"<td width='80'></td>"+
+							"<td><textarea class='diagnosisInput' type = 'text' id='data10diag' /></textarea></td>"+
+							"</tr>"+
+						"</tbody>"+
+					"</table>");
+							});
+						  }
+						})
+ //===================================================================================
+});
+</script>
+<body>
+	<div class="head" }>
+        <p class="pstyle" >基础病治疗过程</p>
+        <a href="./index1修改.html" class="person_in_btn">&lt;返回首页</a>
+    </div>
+    <div>
+        <table>
+            <tbody>
+                <tr>
+                    <td>病种：</td>
+                    <td><input type="text" /></td>
+                    <td>时间：</td>
+                    <td><input type="text" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+		<table>
+			<thead>
+				<tr>
+					<th>化疗用药：</th>
+					<th>药品名称</th>
+					<th>剂量</th>
+					<th>频次</th>
+					<th>给药途径</th>
+					<th>给药时间</th>
+					<th>备注</th>
+				</tr>
+			</thead>
+			<tbody id="add1">
+				<tr>
+					<td><input type="button" id="addTab1" class="dis_add_btn" value="添加" /></td>
+					<td><input type="text" id="drugName" /></td>
+					<td><input class="medicineLength" type="text" id="agentia" /></td>
+					<td><input class="medicineLength" type="text" id="times" /></td>
+					<td><input class="medicineLength" type="text" id="way" /></td>
+					<td><input class="medicineLength" type="text" id="giveTime" /></td>
+					<td><textarea class="remarkLenght" id="remark"></textarea></td>
+				</tr>
+			</tbody>
+		</table>
+		<table>
+			<tbody>
+				<tr>
+					<td width="80"></td>
+					<td class="textalignTd">上个疗程不良反应</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input class="widthInput" type="text" id="lastChemotherapy"/></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="textalignTd">其他</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input class="widthInput" type="text" id="others" /></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="blockMargin" id="add2">
+		<table>
+			<tbody>
+				<tr>
+					<td width="80">心电图：</td>
+					<td>时间</td>
+					<td>
+						<input type="text" name="" width="210px" id="electroTime" />
+					</td>
+					<td>
+						<label for="normal">正常&nbsp;</label>
+	                    <input name="normal" type="radio" id="normal"/>
+	                    <label for="abnormal">&nbsp;&nbsp;&nbsp;异常&nbsp;</label>
+	                    <input name="normal" type="radio" id="abnormal"/>
+	                </td>
+	                <td><input type="button" id="addTab2" class="dis_add_btn" value="添加"/></td>
+				</tr>
+				
+			</tbody>
+		</table>
+
+		<table>
+			<tbody>
+				<tr>
+					<td width="80"></td>
+					<td width="35">结果</td>
+					<td><textarea class="resultOfTextarea" id="result"></textarea></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div>
+		<table>
+			<tbody id="add3">
+				<tr>
+					<td width="80">检验：</td>
+					<td>项目</td>
+					<td>时间</td>
+					<td>备注</td>
+					<td><input type="button" id="addTab3" class="dis_add_btn" value="添加" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td id="data3">
+		                <select class="styleSelect" id="selCheck" >
+                            <option value="0">请选择项目</option>
+		                    <option value="data2">肿瘤标志物</option>
+		                    <option value="data3">血常规五分类</option>
+		                    <option value="data4">生化B</option>
+		                    <option value="data5">小便分析</option>
+		                    <option value="data6">粪便隐血试验</option>
+		                    <option value="data7">乙肝病毒</option>
+		                </select>
+		            </td>
+					<td>
+						<input type="text" name="" width="210px" id="selDate" />
+						<!-- <select class="select_date" id="selDate" >
+						                            <option selected="selected" value="">请选择...</option>
+						                             <option value="0">请选择时间</option>        
+						                            <option >2014/06/01</option>
+						                            <option >2014/07/01</option>
+						                        </select> -->
+					</td>
+					<td><textarea class="remarkLenght"></textarea></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- TableCheckVideo组件 -->
+	<div>
+		<table>
+			<tbody id="add4">
+				<tr>
+					<td>影像检查：</td>
+					<td>项目</td>
+					<td>时间</td>
+					<td>备注</td>
+					<td><input type="button" id="addTab4" class="dis_add_btn" value="添加" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<select class="styleSelect" id="imageCheck">
+                            <option value="0">请选择项目</option>
+                            <option value="CT">CT</option>
+                            <option value="CS">CS（超声）</option>
+                            <option value="MRI">MRI</option>
+                            <option value="FS">FS（放射）</option>
+                            <option value="WEI">胃肠镜</option>
+                            <option value="Nao">脑电图</option>
+                        </select>
+					</td>
+					<td>
+						 <select class="styleSelect" id="imageDateCheck">
+                            <option value="0">请选择时间</option>
+                        </select>
+					</td>
+					<td><textarea class="remarkLenght"></textarea></td>
+					<td>
+						<label for="positive">阳性&nbsp;</label>
+	                    <input name="property" type="radio" id="positive"/>
+	                    <label for="negative">&nbsp;&nbsp;&nbsp;阴性&nbsp;</label>
+	                    <input name="property" type="radio" id="negative"/>   
+					</td>
+				</tr>
+				
+			</tbody>
+		</table>
+	</div>
+	<!-- TableCheckPathology组件-病理 -->
+	<div class="blockMargin" id="add5">
+		<table >
+			<tbody>
+				<tr>
+					<td>病理检查：</td>
+					<td>项目</td>
+					<td>编号</td>
+					<td><input type="button" id="addTab5" class="dis_add_btn" value="添加" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<input type="text" name="" width="210px" id="selpathology" />
+					</td>
+					<td><input type = "text" id="serialNum" /></td>
+					<td></td>
+				</tr>						
+			</tbody>
+		</table>
+		<table>
+			<tbody>
+				<tr>
+					<td width="80"></td>
+					<td>病理诊断</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td width="80"></td>
+					<td><textarea class="diagnosisInput" type = "text" id="data10diag" /></textarea></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="submitDiv" >
+        <button type="submit" class="submitBtn" onclick="infosubmit()">提交</button>
+        <font color="red" id="dialog"></font>
+    </div>
+</body>
+</html>

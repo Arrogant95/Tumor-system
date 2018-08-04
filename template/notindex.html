@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>信息入口</title>
+	<link type="text/css" rel="stylesheet" href="../static/indexStyle.css">
+</head>
+<script src="../static/jquery-3.1.1.min.js"></script>
+<!-- <script type="text/javascript">
+        $(document).ready(function(){
+            /*$('#add1').click(function(){
+                window.location.href="baseInfo.html";
+            });*/
+            /*$('#add2').click(function(){
+                window.location.href="inspectExperience.html";
+            });*/
+            $('#add3').click(function(){
+                window.location.href="pastHis.html";
+            });
+            $('#add4').click(function(){
+                window.location.href="ChemoCondition.html";
+            });
+            $('#add5').click(function(){
+                window.location.href="baseTreat.html";
+            });
+        });
+    </script> -->
+<body>
+	<div  class="contanier">
+        <div  class="content">
+            <p class="base_info ">
+                <a href="./zlsf" class="base_info person_in_btn">患者基本信息</a>
+            </p>
+                <button id="add1" class="AddInterface" onclick="location.href='./zlsfadd'">添加信息</button>
+                <button id="add1" class="AddInterface" onclick="location.href='./zlsf1'" >历史资料</button>
+
+            <p class="treatment_history">
+               <a href="./zlsfIE" class="treatment_history person_in_btn">患者就诊经过</a>  
+            </p>
+                <button id="add2" class="AddInterface" onclick="location.href='./zlsfaddIE'">添加信息</button>
+                <button id="add2" class="AddInterface" onclick="location.href='./zlsfRIE'">历史资料</button>
+               
+
+            <p class="past_history">
+                <a href="./zlsfPS" class="past_history person_in_btn">既往史</a> 
+            </p>
+                <button id="add3" class="AddInterface" onclick="location.href='./zlsfaddPS'">添加信息</button>
+                <button id="add3" class="AddInterface" onclick="location.href='./zlsfRPS'">历史资料</button>
+
+            <p class="chemotherapy">
+                <a href="ChemoCondition.html" class="chemotherapy person_in_btn">化疗情况</a>
+            </p>
+                <button id="add4" class="AddInterface" >添加信息</button>
+                <button id="add4" class="AddInterface" >历史资料</button>
+
+            <p class="base_treatment_info ">
+                <a href="./zlsfBT" class="base_treatment_info person_in_btn">基础病治疗过程</a>
+            </p>
+                <button id="add5" class="AddInterface" onclick="location.href='./zlsfaddBT'">添加信息</button>
+                <button id="add5" class="AddInterface" onclick="location.href='./zlsfRBT'">历史资料</button>
+
+            <p class="search ">
+                <a href="search.html" class="search  person_in_btn">搜索</a>
+            </p>
+        </div>
+    </div>
+   
+</body>
+</html>

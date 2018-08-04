@@ -1,0 +1,128 @@
+body {
+    background-color: #EEE;
+    font-family: "Microsoft YaHei" ! important;
+    width: 1020px;
+    margin: 20px auto;
+    line-height:30px;
+    padding:60px;
+}
+a{text-decoration: none;}
+a:hover{text-decoration: underline;}
+.head{
+    text-align:center;
+}
+.pstyle{
+    font-size:25px;
+}
+table.tableStyle tr:nth-child(even){
+    background-color: #ffcccc;
+}
+.wider{
+    width: 90px;
+}
+.narrower{
+    width: 50px;
+}
+.widerr{
+    width: 120px;
+}
+
+.dis_add_btn{
+    background:white;
+    color:#bf4f49;
+    border:1px solid #bf4f49;
+    border-radius:2px;
+}
+.btn1style{
+        background:white;
+        width:150px;
+        height:45px;
+        color:#bf4f49;
+        font-size:20px;
+        font-weight:bold;
+        border:2px solid #bf4f49;
+        border-radius:4px;
+        margin:10px 20px;
+}
+.btn2style{
+        background:white;
+        width:150px;
+        height:45px;
+        color:#ccc;
+        font-size:20px;
+        font-weight:bold;
+        border:2px solid #ccc;
+        border-radius:4px;
+        margin:10px 20px;
+}
+.person_in_btn {
+    cursor: pointer;
+    text-align: center;
+    color:#bf4f49;
+}
+.medicineLength{
+        width:90px;
+}
+/* 添加按钮 */
+.btnStyle{
+        background:white;
+        color:#bf4f49;
+        border:1px solid #bf4f49;
+        border-radius:2px;
+}
+
+.remarkLenght{
+        width:220px;
+}
+.textalignTd{
+        text-align:left;
+}
+.widthInput{
+        width:780px;
+}
+.blockMargin{
+        margin-bottom:40px;
+}
+.styleSelect{
+        width:180px;
+        appearance:none;
+        background: url(../static/check_logo.png) no-repeat  center right white scroll;
+        -webkit-appearance:none;
+        -moz-appearance:none;
+}
+.resultOfTextarea{
+        width:700px;
+        height:80px;
+}
+.diagnosisInput{
+        width:700px;
+        height:70px;
+}
+.resultInput2{
+        width:680px;
+}
+/* 提交按钮 */
+.submitDiv{
+    width:100%;
+    text-align:center;
+    margin-top:40px;
+}
+.submitBtn{
+    background:white;
+    border:1px solid #bf4f49;
+    border-radius:3px;
+    color:#bf4f49;
+    width:80px;
+    height:30px;
+    font-size:18px;
+    font-family: "Microsoft YaHei","微软雅黑";
+}
+/*展开按钮*/
+.showbtn{
+    width:20px;
+    height:20px;
+    appearance:none;
+    background: url(../static/check_logo.png) no-repeat  center right white scroll;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+}

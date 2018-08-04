@@ -1,0 +1,47 @@
+body {
+    background-color: #EEE;
+    font-family: "Microsoft YaHei" ! important;
+    width: 780px;
+    margin: 20px auto;
+    line-height:40px;
+    padding:60px;
+}
+a{text-decoration: none;}
+a:hover{text-decoration: underline;}
+.head{
+    text-align:center;
+}
+.pstyle{
+    font-size:25px;
+}
+table.tableStyle tr:nth-child(even){
+	background-color: #ffcccc;
+}
+.wider{
+	width: 90px;
+}
+.narrower{
+	width: 50px;
+}
+.widerr{
+	width: 120px;
+}
+.btnstyle{
+		background:white;
+		width:200px;
+		height:50px;
+		color:#bf4f49;
+		font-size:20px;
+		font-weight:bold;
+        border:2px solid #bf4f49;
+        border-radius:4px;
+        margin:20px;
+}
+.pstyle{
+	font-size:25px;
+}
+.person_in_btn {
+    cursor: pointer;
+    text-align: center;
+    color:#bf4f49;
+}

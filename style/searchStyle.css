@@ -1,0 +1,58 @@
+body {
+    background-color: #EEE;
+    font-family: "Microsoft YaHei" ! important;
+    width: 780px;
+    margin: 20px auto;
+    line-height:40px;
+    padding:60px;
+}
+.head{
+        text-align:center;
+}
+.person_in_btn {
+    cursor: pointer;
+    text-align: center;
+    color:#bf4f49;
+}  
+a{text-decoration: none;}
+a:hover{text-decoration: underline;}
+/*标题样式*/
+
+.titleText{
+    font-size:26px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.all_table{
+    
+    margin: 10px auto;
+}
+/*年龄input框的样式*/
+.age{
+    width: 50px;
+}
+
+/*出院日期input框的样式*/
+.leftdate{
+    width: 70px;
+}
+/*用于设置下拉菜单的样式*/
+.down_select{
+    width: 180px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+     background: url(../images/icon/check_logo.png) no-repeat  center right white scroll;
+}
+/*用于设置button的样式*/
+.btn{
+    float: right;
+    background: white;
+    color: #bf4f49;
+    border: 1px solid #bf4f49;
+    border-radius: 2px;
+    margin: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}

@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>用户基本资料录入</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../static/css/app.css">
+  <script type="text/javascript" src="../static/js/jquery-3.1.0.min.js"></script>
+  <script src="../static/js/echarts.common.min.js"></script>
+  <script src="../static/js/bootstrap.min.js"></script>
+  <script>
+  $(document).ready(function(){
+    $.ajax({
+      url:"http://211.83.111.245:5500/infoInsert",
+      data:JSON.stringify({"means":"1"}),
+      type:"POST",
+      contentType: "application/json;charset=utf-8", 
+      dataType: 'json',
+      success:function(data){
+        if (data.code=1) {
+          count=0
+          $.each(data.data,function(i,item){
+            c=""
+            for (l in item.context){
+              c= c+'<input type="radio" name="tips'+count+'" value="'+item.context[l]+'">'+item.context[l]
+            }
+            $("#tips").append(
+              item.name+'： '+c+"</br>"
+              )
+            count=count+1
+          })
+  }
+}})})
+  </script>
+  <script>
+  function infosubmit(){
+    cus_id=$.cookie('cus_id')
+    name=$("input[name='name']").val()
+    age=$("input[name='age']").val()
+    phone=$("input[name='phone']").val()
+    weight=$("input[name='weight']").val()
+    high=$("input[name='high']").val()
+    hip=$("input[name='hip']").val()
+    waist=$("input[name='waist']").val()
+    b_s=$("input[name='b_s']").val()
+    b_f=$("input[name='b_f']").val()
+    b_p=$("input[name='b_p']").val()
+    g_h=$("input[name='g_h']").val()
+    sex=$("input:radio[name='sex']:checked").val()
+    work=$("input:radio[name='work']:checked").val()
+    tips0=$("input:radio[name='tips0']:checked").val()
+    tips1=$("input:radio[name='tips1']:checked").val()
+    tips2=$("input:radio[name='tips2']:checked").val()
+    tips3=$("input:radio[name='tips3']:checked").val()
+    $.ajax({
+      url:"http://211.83.111.245:5500/infoInsert",
+      data:JSON.stringify({"means":"4","cus_id":cusi_id,"name":name,"age":age,"phone":phone,"weight":weight,"high":high,"hip":hip,"waist":waist,"b_s":b_s,"b_f":b_f,"b_p":b_p,"g_h":g_h,"sex":sex,"work":work,"tips0":tips0,"tips1":tips1,"tips2":tips2,"tips3":tips3}),
+      type:"POST",
+      contentType: "application/json;charset=utf-8", 
+      dataType: 'json',
+      success:function(data){
+        $("#dialog").text(data.data)
+}})
+
+  }
+  </script>
+</head>
+<style>
+body{background-color:white}
+</style>
+<body class="home-template">
+<nav class="navbar">
+    <br/>
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+        <li><a href="./"  style="color: #7dc855;font-size: 1.5em;">首页</a></li>
+        <li><a href="./info">个人信息</a></li>
+          <li><a href="./weekplan">营养计划</a></li>
+          <li><a href="#">健康知识库</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">数据管理 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="./addfood">食材管理</a></li>
+              <li><a href="./addcate">菜谱管理</a></li>
+              <li><a href="./catetype">标签管理</a></li>
+              <li><a href="./rules">规则管理</a></li>
+              <li><a href="./tips">tips管理</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+
+<div class="main" style="background-image:url(/static/frontend_header_bg.png);" >
+	<div class="container">
+	<div class="col-md-6">
+		
+	</div>
+		<div id="saveinfo"><!--post2,存储信息-->
+		<div class="col-md-6">
+		<div style="font-size: 2em;text-align: center;">用户信息录入</div>
+		  <div class="form-group">
+		    姓名：<input type="text" class="form-control" name="name" placeholder="姓名"><br/>
+        手机：<input type="number" class="form-control" name="phone" placeholder="电话号码"><br/>
+		    年龄：<input type="number" class="form-control" name="age" placeholder="年龄"><br/>
+			性别：<input type="radio" name="sex" value="男"> 男	
+			  	  <input type="radio" name="sex" value="女"> 女
+			  	  <br/><br/>
+			身高(cm)：<input type="number" class="form-control" name="high" placeholder="身高"><br/>
+			体重(kg)：<input type="number" class="form-control" name="weight" placeholder="体重"><br/>
+			腰围(cm)：<input type="number" class="form-control" name="waist" placeholder="腰围"><br/>
+			臀围(cm)：<input type="number" class="form-control" name="hip" placeholder="臀围"><br/>
+			体力活动： <input type="radio" name="work" value="轻体力劳动"> 轻体力劳动
+                 <input type="radio" name="work" value="中体力劳动"> 中体力劳动
+			 		       <input type="radio" name="work" value="重体力劳动"> 重体力劳动<br/><br/>
+      血糖：<input type="number" class="form-control" name="b_s" placeholder="血糖"><br/>
+      血脂：<input type="number" class="form-control" name="b_f" placeholder="血脂"><br/>
+      血压：<input type="number" class="form-control" name="b_p" placeholder="血压"><br/>
+      糖化血红蛋白：<input type="number" class="form-control" name="g_h" placeholder="糖化血红蛋白"><br/>
+      <div id="tips">
+      </div>
+		  </div>
+		  <button type="submit" class="btn btn-default" onclick="infosubmit()">提交</button><font color:="red" id="dialog"></font>
+		   </br></br></br>
+      </div>
+
+		</div>
+	</div>
+</div>
+</body>
+</html>
+
+  function infosubmit(){
+    name=$("input[name='name']").val()
+    age=$("input[name='age']").val()
+    phone=$("input[name='phone']").val()
+    weight=$("input[name='weight']").val()
+    high=$("input[name='high']").val()
+    hip=$("input[name='hip']").val()
+    waist=$("input[name='waist']").val()
+    b_s=$("input[name='b_s']").val()
+    b_f=$("input[name='b_f']").val()
+    b_p=$("input[name='b_p']").val()
+    g_h=$("input[name='g_h']").val()
+    sex=$("input:radio[name='sex']:checked").val()
+    work=$("input:radio[name='work']:checked").val()
+    tips0=$("input:radio[name='tips0']:checked").val()
+    tips1=$("input:radio[name='tips1']:checked").val()
+    tips2=$("input:radio[name='tips2']:checked").val()
+    tips3=$("input:radio[name='tips3']:checked").val()
+    $.ajax({
+      url:"http://211.83.111.245:5500/infoInsert",
+      data:JSON.stringify({"means":"2","name":name,"age":age,"phone":phone,"weight":weight,"high":high,"hip":hip,"waist":waist,"b_s":b_s,"b_f":b_f,"b_p":b_p,"g_h":g_h,"sex":sex,"work":work,"tips0":tips0,"tips1":tips1,"tips2":tips2,"tips3":tips3}),
+      type:"POST",
+      contentType: "application/json;charset=utf-8", 
+      dataType: 'json',
+      success:function(data){
+        $("#dialog").text(data.data)
+}})
+
+  }
+  

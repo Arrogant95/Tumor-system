@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>基本信息</title>
+    <link type="text/css" rel="stylesheet" href="../static/baseInfoStyle.css">
+    <script src="../static/jquery-3.1.1.min.js" type="text/javascript"></script>
+</head>
+<!--<link rel="stylesheet" type="text/css" href="../style/sty.css">-->
+<style type="text/css">
+	body{
+		border:3px solid #666666;
+            border-radius: 20px;
+            background:#DEF6DE;
+	}
+</style>
+<script type="text/javascript">
+     $(document).ready(function(){  
+     	
+        $.ajax({
+         url:'getNewsJSON.php',
+         dataType:'json',
+         processData: false, 
+         type:'get',
+         success:function(response,statu){
+           var datas=eval(response);
+          
+            
+                
+                    $('#inputf').val(datas[0].filing);
+                    $('#inputr').val(datas[0].registerNum);
+                    $('#inputcard').val(datas[0].cardNum);
+                    $('#inputn').val(datas[0].name);
+                    $('#inputb').val(datas[0].birthday);
+                    $('#inputa').val(datas[0].age);
+                    $('#inputs').val(datas[0].stature);
+                    $('#input7').val(datas[0].self);
+                    $('#input9').val(datas[0].street);
+
+                   /*$('#addTab1').click(function(){
+                    $('#add1').append("<tr><td></td> <td width='85'> <select class='select_input'><option>本人</option><option>家属</option> <option>朋友</option></select></td> <td><input type='text' class='phone_num' value="+datas[0].relation+"></td><tr/>");
+                  
+              } ;*/
+            
+           // console.log(response);
+           //alert(data.code);
+           /*$('#add1'+i).append*/
+         },
+
+     
+         
+});
+               });
+</script>
+<body>
+    <div class="head" >
+            <p class="pstyle">患者基本信息</p>
+            <a href="./index1.html" class="person_in_btn">&lt;返回首页</a>
+    </div>
+     <div>
+        <table>
+            <tbody>
+                <tr>
+                    <td>建档时间：</td>
+                    <td width="400"><input type="text" id="inputf" value="" /></td>
+                    <td>科室：</td>
+                    <td>
+                        <select class="department_select"}>
+                            <option>妇科肿瘤化疗病房</option>
+                        </select>
+                    </td>
+                </tr>
+                </tbody>
+        </table>
+        <table>
+            <tbody>    
+                <tr>
+                    <td>登记号：</td>
+                    <td width="400"><input type="text" id="inputr"/></td>
+                    <td>卡号：</td>
+                    <td ><input type="text" id="inputcard"/></td>
+                </tr>
+                <tr> 
+                    <td>姓名：</td>
+                    <td width="300"><input type="text" id="inputn"/></td>
+                    <td>性别：</td>
+                    <td >
+                        <label for="male">男&nbsp;</label>
+                        <input name="sex" type="radio" id="male"/>
+                        <label for="female">&nbsp;&nbsp;&nbsp;女&nbsp;</label>
+                        <input name="sex" type="radio" id="female"/>   
+                    </td>
+                </tr>
+                <tr>
+                    <td>出生日期：</td>
+                    <td width="300"><input type="text" id="inputb"/></td>
+                    <td>年龄：</td>
+                    <td>
+                        <input class="person_height" type="text" id="inputa"/>&nbsp;身高：&nbsp;
+                        <input class="person_height" type="text" id="inputs"/>cm
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <table>
+            <tbody>
+                <tr id="add1">
+                    <td>手机号码：</td>
+                    <td width="85">
+                        <select class="select_input">
+                            <option>本人</option>
+                            <option>家属</option>
+                            <option>朋友</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" class="phone_num" id="input7"/>&nbsp;
+                    </td>
+                    <td><input type="button" id="addTab1" class="dis_add_btn" value="添加"  /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <table>
+            <tbody>
+                <tr>
+                    <td width="80">居住地：</td>
+                    <td width="85">
+                        <select class="select_input">
+                            <option>四川省</option>
+                        </select>
+                    </td>
+                    <td width="85">
+                        <select class="select_input">
+                            <option>成都市</option>
+                        </select>
+                    </td>
+                    <td width="85">
+                        <select class="select_input">
+                            <option>锦江区</option>
+                        </select>
+                    </td>
+                    <td><input class="detail_address" type="text" id="input9"/></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="submitDiv" >
+        <input class="submitBtn" type="submit" value="提交" />
+    </div>
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+body {
+    background-color: #EEE;
+    font-family: "Microsoft YaHei" ! important;
+    width: 780px;
+    margin: 20px auto;
+    line-height:40px;
+    padding:60px;
+}
+a{text-decoration: none;}
+a:hover{text-decoration: underline;}
+.content {
+    width: 500px;
+    margin: 50px auto;
+    text-align:center;
+}
+table.tableStyle tr:nth-child(even){
+	background-color: #ffcccc;
+}
+.wider{
+	width: 90px;
+}
+.narrower{
+	width: 50px;
+}
+.widerr{
+	width: 120px;
+}
+/* head */
+.titleText{
+    font-size:26px;
+    width:100%;
+    text-align:left;
+    margin-bottom:20px;
+}
+.person_in_btn {
+    cursor: pointer;
+    text-align: center;
+    color:#bf4f49;
+}
+/* 次数 */
+.person_height{
+    width:78px;
+}
+/* 默认疾病史 */
+.result1_width{
+    width:515px;
+}
+/* 疾病史 */
+.addInput{
+    width:20px;
+}
+.department_select{
+    width:180px;
+    appearance:none;
+    background: url(../images/icon/check_logo.png) no-repeat  center right white scroll;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+}
+.result_width{
+    width:520px;
+    height:40px;
+}
+/* 手术史 */
+.result2_width{
+    width:520px;
+    height:70px;
+}
+/* 添加按钮 */
+.dis_add_btn{
+    background:white;
+    color:#bf4f49;
+    border:1px solid #bf4f49;
+    border-radius:2px;
+}
+/* 提交按钮 */
+.submitDiv{
+    width:100%;
+    text-align:center;
+    margin-top:40px;
+    }
+.submitBtn{
+    background:white;
+    border:1px solid #bf4f49;
+    border-radius:3px;
+    color:#bf4f49;
+    width:80px;
+    height:30px;
+    font-size:18px;
+    font-family: "Microsoft YaHei","微软雅黑";
+}

@@ -1,0 +1,52 @@
+body {
+    background-color: #EEE;
+    font-family: "Microsoft YaHei" ! important;
+    width: 780px;
+    margin: 20px auto;
+    line-height:40px;
+    padding:60px;
+}
+a{text-decoration: none;}
+a:hover{text-decoration: underline;}
+
+.person_in_btn {
+    cursor: pointer;
+    text-align: center;
+    color:#000000;
+}
+.content {
+    width: 500px;
+    margin: 50px auto;
+    text-align:center;
+}
+table.tableStyle tr:nth-child(even){
+	background-color: #ffcccc;
+}
+.wider{
+	width: 90px;
+}
+.narrower{
+	width: 50px;
+}
+.widerr{
+	width: 120px;
+}
+/* head */
+.titleText{
+    font-size:26px;
+    width:100%;
+    text-align:left;
+    margin-bottom:20px;
+}
+.styleOfNext: {
+    width:100%;
+    text-align:center;
+}
+.AddInterface{
+    background:white;
+    border:1px solid #bf4f49;
+    border-radius:3px;
+    color:#bf4f49;
+    margin:2px;
+    font-family:微软雅黑;
+}

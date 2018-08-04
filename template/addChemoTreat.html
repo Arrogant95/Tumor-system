@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>化疗情况-增加疗程</title>
+	<link type="text/css" rel="stylesheet" href="../static/addChemoTreatStyle.css">
+	<script src="../static/jquery-3.1.1.min.js"></script>
+</head>
+<script type="text/javascript" >
+ $(document).ready(function(){ 
+        $('#sub').click(function(){
+            var time  = $("#time").val();
+            var treatment = $("#treatment").val();
+            var volume = $("#volume").val();
+            var drugName = $("#drugName").val();
+            var drugjiliang = $("#drugjiliang").val();
+            var drugpingci = $("#drugpingci").val();
+            var drugway = $("#drugway").val();
+            var drugtime = $("#drugtime").val();
+            var drugremark = $("#drugremark").val();
+            var lastTreatmentnot = $("#lastTreatmentnot").val();
+            var treatmentElse = $("#treatmentElse").val();
+            var fudrugName = $("#fudrugName").val();
+            var fudrugjiliang  = $("#fudrugjiliang").val();
+            var fudrugpingci = $("#fudrugpingci").val();
+            var fudrugway = $("#fudrugway").val();
+            var fudrugtime = $("#fudrugtime").val();
+            var fudrugremark = $("#fudrugremark").val();
+            var fulastTreatmentnot = $("#fulastTreatmentnot").val();
+            var fulastTreatmentelse = $("#fulastTreatmentelse").val();
+            var params = {time:time,treatment:treatment,volume:volume,drugName:drugName,drugjiliang:drugjiliang,drugpingci:drugpingci,drugway:drugway,drugtime:drugtime,drugremark:drugremark,lastTreatmentnot:lastTreatmentnot,treatmentElse:treatmentElse,fudrugName:fudrugName,fudrugjiliang:fudrugjiliang,fudrugpingci:fudrugpingci,fudrugway:fudrugway,fudrugtime:fudrugtime,fudrugremark:fudrugremark,fulastTreatmentnot:fulastTreatmentnot,fulastTreatmentelse:fulastTreatmentelse}; 
+            $.ajax({
+                url:'addChemoTreat.php',
+                data:params,
+                type:'POST',
+                success:function(data){
+                    alert('插入成功');
+                }
+            });
+
+
+          })
+        var obj= document.location.search;
+         obj = obj.replace(/[^0-9]/g,''); 
+         $("a").attr("href","./index1.html?id="+obj);
+        });
+ </script>
+<body>
+	<div class="head" >
+		<p class="pstyle" id="add11" >化疗情况</p>
+		<input type="button" id="add22" class="btn1style" value="增加疗程" />
+		<input type="button" id="add33" class="btn2style" value="增加备注" />
+		<a href="index1修改.html" class="person_in_btn">&lt;返回首页</a>
+	</div>
+	<div>
+		<table>
+			<tbody>
+				<tr>
+					<td>时间：<input type="text" id="time" /></td>
+					<td>疗程：<input type="text" id="treatment" /></td>
+					<td>体积表面：<input type="text" id="volume" /></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div>
+		<table>
+			<thead>
+				<tr>
+					<th>化疗用药：</th>
+					<th>药品名称</th>
+					<th>剂量</th>
+					<th>频次</th>
+					<th>给药途径</th>
+					<th>给药时间</th>
+					<th>备注</th>
+				</tr>
+			</thead>
+			<tbody id="add1">
+				<tr>
+					<td><input type="button" id="addTab1" class="dis_add_btn" value="添加" ></td>
+					<td><input type="text" id="drugName" /></td>
+					<td><input class="medicineLength" type="text" id="drugjiliang" /></td>
+					<td><input class="medicineLength" type="text" id="drugpingci" /></td>
+					<td><input class="medicineLength" type="text" id="drugway" /></td>
+					<td><input class="medicineLength" type="text" id="drugtime" /></td>
+					<td><textarea class="remarkLenght" id="drugremark" ></textarea></td>
+				</tr>
+				
+			</tbody>
+		</table>
+		<table>
+			<tbody>
+				<tr>
+					<td width="80"></td>
+					<td class="textalignTd">上个疗程不良反应</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input class="widthInput" type="text" id="lastTreatmentnot" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="textalignTd">其他</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input class="widthInput" type="text" id="treatmentElse" /></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div>
+		<table>
+			<thead>
+				<tr>
+					<th>辅助用药：</th>
+					<th>药品名称</th>
+					<th>剂量</th>
+					<th>频次</th>
+					<th>给药途径</th>
+					<th>给药时间</th>
+					<th>备注</th>
+				</tr>
+			</thead>
+			<tbody id="add2">
+				<tr>
+					<td><input type="button" id="addTab2" class="dis_add_btn" value="添加"/></td>
+					<td><input type="text" id="fudrugName" /></td>
+					<td><input class="medicineLength" type="text" id="fudrugjiliang" /></td>
+					<td><input class="medicineLength" type="text" id="fudrugpingci" /></td>
+					<td><input class="medicineLength" type="text" id="fudrugway" /></td>
+					<td><input class="medicineLength" type="text" id="fudrugtime" /></td>
+					<td><textarea class="remarkLenght" id="fudrugremark" ></textarea></td>
+				</tr>
+			</tbody>
+		</table>
+		<table>
+			<tbody>
+				<tr>
+					<td width="80"></td>
+					<td class="textalignTd">上个疗程不良反应</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input class="widthInput" type="text" id="fulastTreatmentnot" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="textalignTd">其他</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input class="widthInput" type="text" id="fulastTreatmentelse" /></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<div class="submitDiv" >
+        <input class="submitBtn" type="submit" value="提交" id="sub" />
+    </div>
+ 	<script type="text/javascript">
+        $(document).ready(function(){
+            $('#addTab1').click(function(){
+            	$('#add1').append("<tr><td></td><td><input type='text' /></td><td><input class='medicineLength' type='text' /></td><td><input class='medicineLength' type='text' /></td><td><input class='medicineLength' type='text' /></td><td><input class='medicineLength' type='text' /></td><td><textarea class='remarkLenght'></textarea></td></tr>");
+        	});
+            $('#addTab2').click(function(){
+            	$('#add2').append("<tr><td></td><td><input type='text' /></td><td><input class='medicineLength' type='text' /></td><td><input class='medicineLength' type='text' /></td><td><input class='medicineLength' type='text' /></td><td><input class='medicineLength' type='text' /></td><td><textarea class='remarkLenght'></textarea></td></tr>");
+        	});
+        	$('#addTab3').click(function(){
+            	$('#add3').append("<tr><td width='105'></td><td><input type='text' class='wider' placeholder='检查项目'/></td><td><input type='text' class='wider' placeholder='检查项目(英文)'/></td><td>起始时间</td><td><input class='widerr' type='date' /></td><td>结束时间</td><td><input class='widerr' type='date' /></td><td><input class='narrower' type='text' placeholder='状态'' /></td><td><input class='narrower' type='text' placeholder='单位'/></td><td><input class='narrower' type='text' placeholder='参考值'/></td><td><input type='button' id='addTab3' class='dis_add_btn' value='添加'/></td></tr>");
+        	});
+        	$('#addTab4').click(function(){
+            	$('#add4').append("<tr><td width='105'></td><td><input type='text' class='wider' placeholder='检查项目'/></td><td><input type='text' class='wider' placeholder='检查项目(英文)'/></td><td>起始时间</td><td><input class='widerr' type='date' /></td><td>结束时间</td><td><input class='widerr' type='date' /></td><td><input class='narrower' type='text' placeholder='状态'' /></td><td><input class='narrower' type='text' placeholder='单位'/></td><td><input class='narrower' type='text' placeholder='参考值'/></td><td><input type='button' id='addTab3' class='dis_add_btn' value='添加'/></td></tr>");
+        	});
+	        $('#addTab5').click(function(){
+	            $('#add5').append("<table><tbody><tr><td width='105'></td><td>时间</td><td><select class='styleSelect'><option></option></select></td><td><label for='normal'>正常&nbsp;</label><input name='normal' type='radio' id='normal'/><label for='abnormal'>&nbsp;&nbsp;&nbsp;异常&nbsp;</label><input name='normal' type='radio' id='abnormal'/></td></tbody></table><table><tbody><tr><td width='105'></td><td width='35'>结果</td><td><textarea class='resultOfTextarea'></textarea></td></tr></tbody></table>");
+	        });
+	         $('#addTab6').click(function(){
+	            $('#add6').append("<tr><td width='80'></td><td>项目</td><td>时间</td><td>备注</td><td></td></tr><tr><td></td><td><select class='styleSelect'><option></option></select></td><td><select class='styleSelect'><option></option></select></td><td><textarea class='remarkLenght'></textarea></td><td></td></tr>");
+	        });
+	         $('#addTab7').click(function(){
+	            $('#add7').append("<tr><td></td><td><select class='styleSelect'><option></option></select></td><td><select class='styleSelect'><option></option></select></td><td><textarea class='remarkLenght'></textarea></td><td><label for='positive'>阳性&nbsp;</label><input name='property' type='radio' id='positive'/><label for='negative'>&nbsp;&nbsp;&nbsp;阴性&nbsp;</label><input name='property' type='radio' id='negative'/></td></tr>");
+	        });
+	         $('#addTab8').click(function(){
+	            $('#add8').append("<table><tbody><tr><td width='80'></td><td><select class='styleSelect'><option></option></select></td><td><select class='styleSelect'><option></option></select></td><td></td></tr>	</tbody></table><table><tbody><tr><td width='80'></td><td>病理诊断</td><td></td><td></td></tr><tr><td width='80'></td><td><input class='diagnosisInput' type='text' /></td></tr></tbody></table>");
+			});
+        	$('#add11').click(function(){
+                window.location.href="addChemo.html";
+            });
+            $('#add22').click(function(){
+                window.location.href="addChemoTreat.html";
+            });
+            $('#add33').click(function(){
+                window.location.href="addChemoRemark.html";
+            });
+        });
+    </script>
+</body>
+</html>

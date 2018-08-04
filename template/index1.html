@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>信息入口</title>
+	<link type="text/css" rel="stylesheet" href="../static/indexStyle.css">
+</head>
+<link rel="stylesheet" type="text/css" href="../style/sty.css">
+<style type="text/css">
+    .content{border:3px solid #666666;
+            border-radius: 20px;
+            box-shadow: 2px 2px 2px 2px;}
+</style>
+<script src="../static/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+  var obj= document.location.search;
+  obj = obj.replace(/[^0-9]/g,'');         //这两行代码就是获取传输过来的地址上的id数字
+   $(document).ready(function(){
+  $('#add1').click(function(){
+     window.location.href='addBI.html?id='+obj; // 连接到添加患者基本信息的页面
+  });
+  $('#add2').click(function(){
+     window.location.href='readonlyBI.html?id='+obj; //连接到查看患者基本信息的页面，下面就是连接到各种页面的代码
+  });
+  $('#add3').click(function(){
+     window.location.href='addIE.html?id='+obj;   
+  });
+  $('#add4').click(function(){
+     window.location.href='readonlyIE.html?id='+obj;
+  });
+  $('#add5').click(function(){
+     window.location.href='addPS.html?id='+obj;
+  });
+  $('#add6').click(function(){
+     window.location.href='readonlyPS.html?id='+obj;
+  });
+  $('#add7').click(function(){
+     window.location.href='addChemoTreat.html?id='+obj;
+  });
+  $('#add8').click(function(){
+     window.location.href='addChemoRemark.html?id='+obj;
+  });
+  $('#add9').click(function(){
+     window.location.href='addBT.html?id='+obj;
+  });
+  $('#add10').click(function(){
+     window.location.href='readonlyBT.html?id='+obj;
+  });
+});
+</script>
+ <!--<script type="text/javascript">
+        $(document).ready(function(){
+            $('#add1').click(function(){
+                window.location.href="baseInfo.html";
+            });
+            $('#add2').click(function(){
+                window.location.href="inspectExperience.html";
+            });
+            $('#add3').click(function(){
+                window.location.href="pastHis.html";
+            });
+            $('#add4').click(function(){
+                window.location.href="ChemoCondition.html";
+            });
+            $('#add5').click(function(){
+                window.location.href="baseTreat.html";
+            });
+        });
+    </script> -->
+<body>
+	<div  class="contanier">
+        <div  class="content">
+            <p class="base_info ">
+                <a href="./baseinfo修改.html" class="base_info person_in_btn">患者基本信息</a>
+            </p>
+                <button id="add1" class="AddInterface">添加信息</button>
+                <button id="add2" class="AddInterface">历史资料</button>
+
+            <p class="treatment_history">
+               <a href="./zlsfIE" class="treatment_history person_in_btn">患者就诊经过</a>  
+            </p>
+                <button id="add3" class="AddInterface" >添加信息</button>
+                <button id="add4" class="AddInterface" >历史资料</button>
+               
+
+            <p class="past_history">
+                <a href="pastHis.html" class="past_history person_in_btn">既往史</a> 
+            </p>
+                <button id="add5" class="AddInterface" >添加信息</button>
+                <button id="add6" class="AddInterface" >历史资料</button>
+
+            <p class="chemotherapy">
+                <a href="ChemoCondition.html" class="chemotherapy person_in_btn">化疗情况</a>
+            </p>
+                <button id="add7" class="AddInterface" >添加信息</button>
+                <button id="add8" class="AddInterface" >历史资料</button>
+
+            <p class="base_treatment_info ">
+                <a href="baseTreat.html" class="base_treatment_info person_in_btn">基础病治疗过程</a>
+            </p>
+                <button id="add9" class="AddInterface" >添加信息</button>
+                <button id="add10" class="AddInterface" >历史资料</button>
+
+            <p class="search ">
+                <a href="search.html" class="search  person_in_btn">搜索</a>
+            </p>
+        </div>
+    </div>
+   
+</body>
+</html>

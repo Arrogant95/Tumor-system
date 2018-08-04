@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>既往史</title>
+	<link type="text/css" rel="stylesheet" href="../static/pastHisStyle.css">
+	<script src="../static/jquery-3.1.1.min.js" type="text/javascript"></script>
+</head>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#addTab1').click(function(){
+				$('#add1').append("<tr>"+
+				"<td></td>"+
+				" <td><input type='text' id='operationTime'/></td>"+
+	            "<td> <input type='text' id='operationName'/></td>"+
+	            "</tr>"
+	            	);
+				});
+
+			$('#addTab2').click(function(){
+				$('#add2').append("<table><tbody><tr><td width='100' ></td> </tr> </tbody></table>"+
+					"<table ><tbody ><tr><td></td> "+
+					"<td >手术时间</td><td>手术名称</td></tr>"+
+					"<tr><td width='100'></td><td><input type='text' id='operationTime' /></td>"+
+	            	"<td> <input type='text' id='operationName'/></td></tr></tbody></table>"+
+					"<table><tbody><tr><td width='100'></td><td>术中见</td></tr></tbody></table>"+
+					"<table><tbody><tr><td width='100'>基本情况：</td><td><textarea class='result_width' wrap='hard' id='baseInfo'></textarea></td></tr></tbody></table> "+
+					"<table><tbody><tr> <td width='100'>腹水情况：</td> <td><textarea class='result_width' wrap='hard' id='ascites'></textarea></td> </tr> </tbody></table>"+
+					"<table><tbody> <tr><td width='100'>肿块情况：</td><td><textarea class='result2_width' wrap='hard' id='lump'></textarea></td></tr> </tbody></table> "+
+					"<table><tbody> <tr><td width='100'></td> <td>术中冰冻检查</td></tr> "+
+					"<tr><td width='100'></td><td><textarea class='result2_width' wrap='hard' id='frozenExamine'></textarea></td></tr></tbody></table>"+
+					"<table><tbody><tr><td width='100'></td><td>术后病理检查</td></tr><tr> <td width='100'></td><td><textarea class='result2_width' wrap='hard' id='pathologyExamine'></textarea></td></tr> </tbody></table>"+
+					"<table> <tbody><tr> <td width='100'></td><td>残留病灶</td></tr><tr><td width='100'></td><td><input class='result1_width' type='text' id='residualDisease' /></td></tr></tbody></table>");
+				});
+	});
+</script>
+
+<script type="text/javascript" >
+ $(document).ready(function(){ 
+        $('#sub').click(function(){
+            var Pregnancy  = $("#Pregnancy").val();
+            var birth = $("#birth").val();
+            var abortion = $("#abortion").val();
+            var lastMenstruation = $("#lastMenstruation").val();
+            var allergy = $("#allergy").val();
+            var zhongliuHome = $("#zhongliuHome").val();
+            var diseasetime = $("#diseasetime").val();
+            var diseasename = $("#diseasename").val();
+            var diseaseremark = $("#diseaseremark").val();
+            var time = $("#time").val();
+            var name = $("#name").val();
+            var baseInfo = $("#baseInfo").val();
+            var ascites = $("#ascites").val();
+            var lump = $("#lump").val();
+            var frozenExamine = $("#frozenExamine").val();
+            var pathologyExamine = $("#pathologyExamine").val();
+            var residualDisease = $("#residualDisease").val();
+            var doctor = $("#doctor").val();
+            var hospital = $("#hospital").val();
+            var params = {Pregnancy:Pregnancy,birth:birth,abortion:abortion,lastMenstruation:lastMenstruation,allergy:allergy,zhongliuHome:zhongliuHome,diseasetime:diseasetime,diseasename:diseasename,diseaseremark:diseaseremark,time:time,name:name,baseInfo:baseInfo,ascites:ascites,lump:lump,frozenExamine:frozenExamine,pathologyExamine:pathologyExamine,residualDisease:residualDisease,doctor:doctor,hospital:hospital}; 
+            $.ajax({
+                url:'addPS.php',
+                data:params,
+                type:'POST',
+                success:function(data){
+                    alert('插入成功');
+                }
+            });
+
+
+          })
+         var obj= document.location.search;
+         obj = obj.replace(/[^0-9]/g,''); 
+         $("a").attr("href","./index1.html?id="+obj);
+        });
+ </script>
+<body>
+	<div class="content" >
+        <p class="titleText">既往史</p>
+        <a class="person_in_btn">&lt;返回首页</a>
+    </div>
+	<div class="times">
+	    <table>
+	        <tbody>
+	        <tr>
+	            <td>月经生育史：</td>
+	            <td width="85">孕次</td>
+	            <td width="85">产次</td>
+	            <td width="85">流产次</td>
+	            <td width="85">末次月经</td>
+	        </tr>
+	        <tr>
+	            <td></td>
+	            <td><input class="person_height" type="text" id="Pregnancy" /></td>
+	            <td><input class="person_height" type="text" id="birth" /></td>
+	            <td><input class="person_height" type="text" id="abortion" /></td>
+	            <td><input class="person_height" type="text" id="lastMenstruation" /></td>
+	            <td>岁</td>
+	        </tr>
+	        </tbody>
+	    </table>
+	</div>
+	<div class="defaultHis">
+        <table>
+            <tbody>
+                <tr>
+                    <td>过敏史：</td>
+                    <td><input class="result1_width" type="text" id="allergy" /></td>
+                </tr>
+                <tr>
+                    <td>肿瘤家族史：</td>
+                    <td><input class="result1_width" type="text" id="zhongliuHome" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+	<div class="dieaseHis">
+	    <table >
+	        <tbody id="add1">
+	            <tr>
+	                <td width="100">疾病史：</td>
+	                <td id="add">时间</td>
+	                <td id="add">疾病名称</td>
+	            </tr>
+	            <tr >
+	                <td><input type="button" id="addTab1" class="dis_add_btn" value="添加" /></td> 
+	                <td ><input type="text" id="diseasetime" /></td>
+	                <td> <input type="text" id="diseasename"/></td>
+	            </tr>
+	        </tbody>
+	    </table>        
+        <table class="remark">
+	        <tbody>
+	            <tr>
+	                <td width="100"></td>
+	                <td>备注</td>
+	            </tr>
+	            <tr>
+	                <td width="100"></td>
+	                <td><textarea class="result_width" wrap="hard" id="diseaseremark"></textarea></td>
+	            </tr>
+	        </tbody>
+        </table>
+	</div>
+	<div class="operationHis" id="add2">
+	    <table>
+	        <tbody>
+	            <tr>
+	                <td width="100" >手术史：</td>
+	                <td >手术时间</td>
+	            	<td>手术名称</td>
+	            </tr>       
+	        <tr>
+	            <td><input type="button" class="dis_add_btn" value="添加" id="addTab2"/></td>   
+	            <td><input type="text" id="time" /></td>
+	            <td> <input type="text" id="name"/></td>
+	        </tr>
+	        </tbody>
+	    </table>
+	        
+	    <table>
+	        <tbody>
+	        <tr>
+	            <td width="100"></td>
+	            <td>术中见</td>
+	        </tr>
+	        </tbody>
+	    </table>
+	        
+	    <table>
+	        <tbody>
+	        <tr>
+	            <td width="100">基本情况：</td>
+	            <td><textarea class="result_width" wrap="hard" id="baseInfo"></textarea></td>
+	        </tr>
+	        </tbody>
+	    </table>
+	    <table>
+	        <tbody>
+	        <tr>
+	            <td width="100">腹水情况：</td>
+	            <td><textarea class="result_width" wrap="hard" id="ascites"></textarea></td>
+	        </tr>
+	        </tbody>
+	    </table>
+	    <table>
+	        <tbody>
+	        <tr>
+	            <td width="100">肿块情况：</td>
+	            <td><textarea class="result_width" wrap="hard" id="lump"></textarea></td>
+	        </tr>
+	        </tbody>
+	    </table>
+	    <table>
+	        <tbody>
+	        <tr>
+	            <td width="100"></td>
+	            <td>术中冰冻检查</td>
+	        </tr>
+	        <tr>
+	            <td width="100"></td>
+	            <td><textarea class="result2_width" wrap="hard" id="frozenExamine"></textarea></td>
+	        </tr>
+	        </tbody>
+	    </table>
+	    <table>
+	        <tbody>
+	        <tr>
+	            <td width="100"></td>
+	            <td>术后病理检查</td>
+	        </tr>
+	        <tr>
+	            <td width="100"></td>
+	            <td><textarea class="result2_width" wrap="hard" id="pathologyExamine"></textarea></td>
+	        </tr>
+	        </tbody>
+	    </table>
+	    <table>
+	        <tbody>
+	        <tr>
+	            <td width="100"></td>
+	            <td>残留病灶</td>
+	        </tr>
+	        <tr>
+	            <td width="100"></td>
+	            <td><input class="result1_width" type="text" id="residualDisease" /></td>
+	        </tr>
+	        </tbody>
+	    </table>
+	    </div>
+	    <div>
+	    <table>
+	        <tbody>
+	            <tr>
+	                <td width="100"></td>
+	                <td>手术医生</td>
+	                <td>手术医院</td>
+	            </tr>
+	            <tr>
+	                <td width="100"></td>
+	                <td><input type="text" id="doctor" /></td>
+	                <td><input type="text" id="hospital" /></td>
+	            </tr>
+	            
+	        </tbody>
+	    </table>
+	</div>
+	<div class="submitDiv" >
+        <button type="submit" class="submitBtn" id="sub" >提交</button>
+        <font color="red" id="dialog"></font>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>化疗情况-增加备注</title>
+	<link type="text/css" rel="stylesheet" href="../static/addChemoRemarkStyle.css">
+	<script src="../static/jquery-3.1.1.min.js"></script>
+</head>
+
+<script type="text/javascript" >
+ $(document).ready(function(){ 
+        $('#sub').click(function(){
+            var time  = $("#time").val();
+            var remark = $("#remark").val();
+            var zhongliuTime = $("#zhongliuTime").val();
+            var zhongliuRemark = $("#zhongliuRemark").val();
+            var bloodTime = $("#bloodTime").val();
+            var bloodRemark = $("#bloodRemark").val();
+            var EEGTime = $("#EEGTime").val();
+            var EEGResult = $("#EEGResult").val();
+            var checkName = $("#checkName").val();
+            var checkTime = $("#checkTime").val();
+            var checkRemark = $("#checkRemark").val();
+            var picCheckName  = $("#picCheckName").val();
+            var picCheckTime = $("#picCheckTime").val();
+            var picCheckRemark = $("#picCheckRemark").val();
+            var bingliName = $("#bingliName").val();
+            var bingliNum = $("#bingliNum").val();
+            var bingliResult = $("#bingliResult").val();
+            var ptctTime = $("#ptctTime").val();
+            var ptctResult = $("#ptctResult").val();
+            var zkctTime = $("#zkctTime").val();
+            var zkctResult = $("#zkctResult").val();
+            var waiyin = $("#waiyin").val();
+            var yindao  = $("#yindao").val();
+            var gongjing = $("#gongjing").val();
+            var zigong = $("#zigong").val();
+            var fujian = $("#fujian").val();
+            var elset = $("#elset").val();
+            var params = {time:time,remark:remark,zhongliuTime:zhongliuTime,zhongliuRemark:zhongliuRemark,bloodTime:bloodTime,bloodRemark:bloodRemark,EEGTime:EEGTime,EEGResult:EEGResult,checkName:checkName,checkTime:checkTime,checkRemark:checkRemark,picCheckName:picCheckName,picCheckTime:picCheckTime,picCheckRemark:picCheckRemark,bingliName:bingliName,bingliNum:bingliNum,bingliResult:bingliResult,ptctTime:ptctTime,ptctResult:ptctResult,zkctTime:zkctTime,zkctResult:zkctResult,waiyin:waiyin,yindao:yindao,gongjing:gongjing,zigong:zigong,fujian:fujian,elset:elset}; 
+            $.ajax({
+                url:'addChemoRemark.php',
+                data:params,
+                type:'POST',
+                success:function(data){
+                    alert('插入成功');
+                }
+            });
+
+
+          })
+        var obj= document.location.search;
+         obj = obj.replace(/[^0-9]/g,''); 
+         $("a").attr("href","./index1.html?id="+obj);
+        });
+ </script>
+
+<body>
+<div class="head" >
+		<p class="pstyle" id="add11" >化疗情况</p>
+		<input type="button" id="add22" class="btn2style" value="增加疗程" />
+		<input type="button" id="add33" class="btn1style" value="增加备注" />
+		<a href="index1修改.html" class="person_in_btn">&lt;返回首页</a>
+	</div>
+	<!-- TableSum组件，用于设置第一行 -->
+	<div>
+		<table>
+			<tbody>
+				<tr>
+					<td width="85">时间：</td>
+					<td><input type="text" id="time" /></td>
+				</tr>
+				<tr>
+					<td>备注：</td>
+					<td><input class="firstInput" type="text" id="remark" /></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- TableParameterTumour组件 -->
+	<div>
+		<table>
+			<tbody id="add1">
+				<tr >
+					<td >肿瘤标志物：</td>
+					<td>时间</td>
+					<td>
+						<input type="text" id="zhongliuTime" /></td>
+					</td>
+					<td>备注</td>
+					<td><textarea class="remarkLenght" id="zhongliuRemark" ></textarea></td>
+					<td><input type="button" id="addTab1" class="dis_add_btn" value="添加" /></td>
+				</tr>
+				<!-- {newMedicineWrapper} -->
+			</tbody>
+		</table>
+	</div>
+	<!-- TableParameter组件 -->
+	<div>
+		<table>
+			<tbody id="add2">
+				<tr>
+					<td width="95">血常规：</td>
+					<td>时间</td>
+					<td>
+						<input type="text" id="bloodTime" /></td>
+					</td>
+					<td>备注</td>
+					<td><textarea class="remarkLenght" id="bloodRemark" ></textarea></td>
+					<td><input type="button" id="addTab2" class="dis_add_btn" value="添加"/></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+		<!-- TableParameterECG组件-心电图 -->
+	<div class="blockMargin"  id="add3">
+		<table>
+			<tbody>
+				<tr>
+					<td width="105">心电图：</td>
+					<td>时间</td>
+					<td>
+						<input type="text" id="EEGTime" /></td>
+					</td>
+					<td>
+						<label for="normal">正常&nbsp;</label>
+	                    <input name="normal" type="radio" id="normal"/>
+	                    <label for="abnormal">&nbsp;&nbsp;&nbsp;异常&nbsp;</label>
+	                    <input name="normal" type="radio" id="abnormal"/>
+	                </td>
+	                <td><input type="button" id="addTab3" class="dis_add_btn" value="添加"/></td>
+				</tr>
+				
+			</tbody>
+		</table>
+
+		<table>
+			<tbody>
+				<tr>
+					<td width="105"></td>
+					<td width="35">结果</td>
+					<td><textarea class="resultOfTextarea" id="EEGResult" ></textarea></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- TableCheckAll组件 -->
+	<div>
+		<table>
+			<tbody  id="add4">
+				<tr>
+					<td width="80">检验：</td>
+					<td>项目</td>
+					<td>时间</td>
+					<td>备注</td>
+					<td><input type="button" id="addTab4" class="dis_add_btn" value="添加"/></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<input type="text" id="checkName" /></td>
+					</td>
+					<td>
+						<input type="text" id="checkTime" /></td>
+					</td>
+					<td><textarea class="remarkLenght"  id="checkRemark" ></textarea></td>
+					<td></td>
+				</tr>
+				<!-- {newMedicineWrapper} -->
+			</tbody>
+		</table>
+	</div>
+	<!-- TableCheckVideo组件 -->
+	<div>
+		<table>
+			<tbody id="add5">
+				<tr>
+					<td>影像检查：</td>
+					<td>项目</td>
+					<td>时间</td>
+					<td>备注</td>
+					<td><input type="button" id="addTab5" class="dis_add_btn" value="添加"/></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<input type="text" id="picCheckName" /></td>
+					</td>
+					<td>
+						<input type="text" id="picCheckTime" /></td>
+					</td>
+					<td><textarea class="remarkLenght" id="picCheckRemark" ></textarea></td>
+					<td>
+						<label for="positive">阳性&nbsp;</label>
+	                    <input name="property" type="radio" id="positive"/>
+	                    <label for="negative">&nbsp;&nbsp;&nbsp;阴性&nbsp;</label>
+	                    <input name="property" type="radio" id="negative"/>   
+					</td>
+				</tr>
+				<!-- {newMedicineWrapper} -->
+			</tbody>
+		</table>
+	</div>
+	<!-- TableCheckPathology组件-病理 -->
+	<div class="blockMargin" id="add6">
+		<table>
+			<tbody>
+				<tr>
+					<td>病理检查：</td>
+					<td>项目</td>
+					<td>编号</td>
+					<td><input id="addTab6" type="button" class="dis_add_btn" value="添加"/></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<input type="text" id="bingliName" /></td>
+					</td>
+					<td>
+						<input type="text" id="bingliNum" /></td>
+					</td>
+					<td></td>
+				</tr>						
+			</tbody>
+		</table>
+		<table>
+			<tbody>
+				<tr>
+					<td width="80"></td>
+					<td>病理诊断</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td width="80"></td>
+					<td><input class="diagnosisInput" type="text" id="bingliResult" /></td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- {newMedicineWrapper} -->
+	</div>
+	<!-- TableExam -->
+	<div>
+		<table>
+			<tbody>
+				<tr>
+					<td></td>
+					<td>时间</td>
+					<td>结果</td> 
+				</tr>
+				<tr>
+					<td>普通查体：</td>
+					<td>
+						<input type="text" id="ptctTime" /></td>
+					</td>
+					<td>
+						<input class="resultInput2" type="text" id="ptctResult" />
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div>
+		<table>
+			<tbody>
+				<tr>
+					<td></td>
+					<td>时间</td>
+					<td>结果</td> 
+				</tr>
+				<tr>
+					<td>专科查体：</td>
+					<td>
+						<input type="text" id="zkctTime" /></td>
+					</td>
+					<td>
+						<input class="resultInput2" type="text" id="zkctResult" />
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- DetailExam组件 -->
+	<div>
+		<table>
+			<tbody>
+				<tr>
+					<td>外阴：</td>
+					<td>
+						<input type="text" id="waiyin" /></td>
+					</td>
+					<td>阴道：</td>
+					<td>
+						<input type="text" id="yindao" /></td>
+					</td>
+					<td>宫颈：</td>
+					<td>
+						<input type="text" id="gongjing" /></td>
+					</td>
+				</tr>
+				<tr>
+					<td>子宫：</td>
+					<td>
+						<input type="text" id="zigong" /></td>
+					</td>
+					<td>附件：</td>
+					<td>
+						<input type="text" id="fujian" /></td>
+					</td>
+					<td>其他：</td>
+					<td>
+						<input type="text" id="elset" /></td>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="submitDiv" >
+        <input class="submitBtn" type="submit" id="sub" value="提交" />
+    </div>
+    <script type="text/javascript">
+	$(document).ready(function(){
+		$('#addTab1').click(function(){
+			$('#add1').append("<tr><td ></td><td>时间</td><td><select class='styleSelect'><option></option></select></td><td>备注</td><td><textarea class='remarkLenght'></textarea></td><td></td></tr>");
+		});
+		$('#addTab2').click(function(){
+			$('#add2').append("<tr><td ></td><td>时间</td><td><select class='styleSelect'><option></option></select></td><td>备注</td><td><textarea class='remarkLenght'></textarea></td><td></td></tr>");
+		});
+		$('#addTab3').click(function(){
+	            $('#add3').append("<table><tbody><tr><td width='105'></td><td>时间</td><td><select class='styleSelect'><option></option></select></td><td><label for='normal'>正常&nbsp;</label><input name='normal' type='radio' id='normal'/><label for='abnormal'>&nbsp;&nbsp;&nbsp;异常&nbsp;</label><input name='normal' type='radio' id='abnormal'/></td></tbody></table><table><tbody><tr><td width='105'></td><td width='35'>结果</td><td><textarea class='resultOfTextarea'></textarea></td></tr></tbody></table>");
+	        });
+		$('#addTab4').click(function(){
+	            $('#add4').append("<tr><td width='80'></td><td>项目</td><td>时间</td><td>备注</td><td></td></tr><tr><td></td><td><select class='styleSelect'><option></option></select></td><td><select class='styleSelect'><option></option></select></td><td><textarea class='remarkLenght'></textarea></td><td></td></tr>");
+	        });
+		$('#addTab5').click(function(){
+	            $('#add5').append("<tr><td></td><td><select class='styleSelect'><option></option></select></td><td><select class='styleSelect'><option></option></select></td><td><textarea class='remarkLenght'></textarea></td><td><label for='positive'>阳性&nbsp;</label><input name='property' type='radio' id='positive'/><label for='negative'>&nbsp;&nbsp;&nbsp;阴性&nbsp;</label><input name='property' type='radio' id='negative'/></td></tr>");
+	        });
+		$('#addTab6').click(function(){
+	            $('#add6').append("<table><tbody><tr><td width='80'></td><td><select class='styleSelect'><option></option></select></td><td><select class='styleSelect'><option></option></select></td><td></td></tr>	</tbody></table><table><tbody><tr><td width='80'></td><td>病理诊断</td><td></td><td></td></tr><tr><td width='80'></td><td><input class='diagnosisInput' type='text' /></td></tr></tbody></table>");
+			});
+		$('#add11').click(function(){
+                window.location.href="addChemo.html";
+            });
+        $('#add22').click(function(){
+            window.location.href="addChemoTreat.html";
+        });
+        $('#add33').click(function(){
+            window.location.href="addChemoRemark.html";
+        });
+	});
+	
+</script>
+</body>
+</html>

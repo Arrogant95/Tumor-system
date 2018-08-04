@@ -1,0 +1,89 @@
+body {
+    background-color: #EEE;
+    font-family: "Microsoft YaHei" ! important;
+    width: 780px;
+    margin: 20px auto;
+    line-height:40px;
+    padding:60px;
+}
+a{text-decoration: none;}
+a:hover{text-decoration: underline;}
+.head{
+    text-align:center;
+}
+.pstyle{
+    font-size:25px;
+}
+table.tableStyle tr:nth-child(even){
+	background-color: #ffcccc;
+}
+.wider{
+	width: 90px;
+}
+.narrower{
+	width: 50px;
+}
+.widerr{
+	width: 120px;
+}
+.person_in_btn {
+    cursor: pointer;
+    text-align: center;
+    color:#bf4f49;
+}
+.dis_add_btn{
+    background:white;
+    color:#bf4f49;
+    border:1px solid #bf4f49;
+    border-radius:2px;
+}
+.department_select{
+    width:180px;
+    appearance:none;
+    background: url(../static/check_logo.png) no-repeat  center right white scroll;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+}
+/*年龄和身高的input框的样式*/
+.person_height{
+    width:26px;
+}
+/*用于设置所有下拉菜单的样式,除科室下拉菜单*/
+.select_input{
+    width:80px;
+    appearance:none;
+   	-webkit-appearance:none;/* 怎么让自带的下拉去掉 */
+    -moz-appearance:none;
+    background: url(../static/check_logo.png) no-repeat  center right white scroll;
+}
+/*添加联系方式处的样式*/
+.phone_num: {
+    width:130px;
+}
+/*居住地最长input框的样式*/
+.detail_address{
+    width:380px
+},
+/*用于设置button的样式*/
+.dis_add_btn{
+    background:white;
+    color:#bf4f49;
+    border:1px solid #bf4f49;
+    border-radius:2px;
+}
+/* 提交按钮 */
+.submitDiv{
+    width:100%;
+    text-align:center;
+    margin-top:40px;
+    }
+.submitBtn{
+        background:white;
+        border:1px solid #bf4f49;
+        border-radius:3px;
+        color:#bf4f49;
+        width:80px;
+        height:30px;
+        font-size:18px;
+        font-family: "Microsoft YaHei","微软雅黑";
+    }

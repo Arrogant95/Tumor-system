@@ -1,0 +1,31 @@
+body {
+    background-color: #EEE;
+    font-family: "Microsoft YaHei" ! important;
+    width: 780px;
+    margin: 20px auto;
+    line-height:40px;
+    padding:60px;
+}
+
+.content{
+	font-family:微软雅黑;
+	width: 780px;
+    margin: 20px auto;
+    line-height:40px;
+    padding:60px;
+    text-align:center;
+}
+.pstyle{
+	font-size:25px;
+}
+.btnstyle{
+	background:white;
+	width:200px;
+	height:50px;
+	color:#bf4f49;
+	font-size:20px;
+	font-weight:bold;
+    border:2px solid #bf4f49;
+    border-radius:4px;
+    margin:20px;
+}

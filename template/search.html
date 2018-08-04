@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>高级查询</title>
+	<link type="text/css" rel="stylesheet" href="../static/searchStyle.css">
+    <script src="../static/jquery-3.1.1.min.js" type="text/javascript"></script>
+</head>
+<script type="text/javascript">
+
+	$(function(){
+		$('#search').click(function(){
+			var name = $("input[name='name']").val();
+			if(name == null || name == ""){                             //通过Jquery获取用户填写的姓名，判断是否为空
+				alert("请输入姓名");
+				return;
+			}
+
+			$.ajax({
+	     		url:'search.php',
+	     		data:{name:name},
+	         	type:'POST',
+	         	success:function(data){
+	         		var dataObj = JSON.parse(data);
+	         		var data1 = dataObj[0];                            //把数据库返回过来的数据显示在页面上
+	         		console.log(data1);
+	         		$('#phoneNum').val(data1.phoneNum);
+	         		$('#diseaseAttribute').val(data1.diseaseAttribute);
+	         		$('#pathologialDiagnosis').val(data1.pathologialDiagnosis);
+	         		$('#operationName').val(data1.operationName);
+	         		$('#headDOC').val(data1.headDOC);
+	         		$('#visitingStaff').val(data1.visitingStaff);
+	         		$('#residentDOC').val(data1.residentDOC);
+	         		$('#surgeon').val(data1.surgeon);
+	         		$('#ageStart').val(data1.ageStart);
+	         		$('#ageEnd').val(data1.ageEnd);
+	         		$('#startLeave').val(data1.startLeave);
+	         		$('#endLeave').val(data1.endLeave);
+	         		$('#bingli').val(data1.bingli);
+	         	}
+     	    });
+		})
+		$('#re').click(function(){
+			var name = $("input[name='name']").val();
+			alert('患者'+name+'血压偏高，已提醒及时回医院治疗');
+		})
+	})
+</script>
+<body>
+	<div  class="head" >
+        <p class="titleText" >高级查询</p>
+        <a href="index1.html" class="person_in_btn">&lt;返回首页</a>
+    </div>
+	 <table class="all_table" >
+	    <tbody>
+	        <tr>
+	            <td>科室：</td>                            
+	            <td>
+	                <select class="down_select" onChange={this.handleDptChange}>
+	                    <option value='1'>妇科肿瘤化疗病房</option>
+	                    <option value='2'>肝胆外科</option>
+	                </select>
+	            </td>
+	        </tr>
+	        <tr> 
+	            <td>姓名：</td>
+	            <td>
+	                <input type="text"  onChange={this.handleChange} name="name" />
+	                <!-- {/*<input type="text" />*/} -->
+	            </td>
+	            <td>性别：</td>
+	            <td>
+	                <select class="down_select"  onChange={this.handleGenderChange}>
+	                    <option>女</option>
+	                    <option>男</option>
+	                </select>   
+	            </td>
+	        </tr>
+	        <tr> 
+	            <td>手机号码：</td>
+	            <td>
+	                <input type="text" onChange={this.handlePhoneChange} id="phoneNum" />
+	            </td>
+	        </tr>
+	        <tr>
+	            <td>疾病属性：</td>
+	            <td>
+	                <input type="text" id="diseaseAttribute"/>
+	               
+	            </td>
+	            <td>出院诊断：</td>
+	            <td>
+	               <input type="text" id="pathologialDiagnosis"/>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td>病理诊断：</td>
+	            <td>
+	                <input type="text" id="bingli"/>
+	            </td>
+	            <td>手术名称：</td>
+	            <td>
+	                <input type="text" id="operationName"/>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td>主任医生：</td>
+	            <td>
+	                <input type="text" id="headDOC"/>
+	            </td>
+	            <td>主治医生：</td>
+	            <td>
+	                <input type="text" id="visitingStaff"/>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td>主院医生：</td>
+	            <td>
+	               <input type="text" id="residentDOC"/>
+	            </td>
+	            <td>主刀医生：</td>
+	            <td>
+	                <input type="text" id="surgeon"/>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td>年龄：</td>
+	            <td>
+	                <input class="age" type="text" onChange={this.handleChange} id="ageStart" />
+	                ~<input class="age" type="text"  onChange={this.handleChange} id="ageEnd" />
+	            </td>
+	            <td>出院日期：</td>
+	            <td>
+	                <input class="leftdate" type="text"  onChange={this.handleChange} id="startLeave" />
+	                ~<input  class="leftdate" type="text"  onChange={this.handleChange} id="endLeave" />
+	            </td>
+	        </tr>                                                    
+	    </tbody>
+	</table>
+	<!-- <button class="btn" onClick="search.php" id="search">查询</button></form> -->
+    <a href="oprationSearch.html">搜索手术患者</a>
+	<button class="btn" id="search">查询</button>
+	<button class="btn" id="re">提醒</button>
+</body>
+</html> 
